@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f4f6f8;
+
+  /* Base real del header que ya estás usando */
+  --color-primary: #1b4d5f;
+  --color-primary-deep: #163e4d;
+
+  /* Secundario (libro/logo) */
+  --color-secondary: #86a9b5;
+
+  /* Botones */
+  --color-btn: #1b4d5f;
+  --color-btn-hover: #2c6b80;
+
+  /* Texto */
+  --color-text: #24343b;
+  --color-text-muted: #6b7c85;
+
+  /* Bordes */
+  --color-border: #d6dee3;
+
+  /* Accent (ajustado: menos dorado, más apagado) */
+  --color-accent: #bfa67a;
+
+  /* Tipografía */
+  --font-heading: "Playfair Display", "Lora", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    color: var(--color-text);
+  }
+}
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  padding: 1rem 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(22, 62, 77, 0.85) 0%,
+    rgba(22, 62, 77, 0.3) 40%,
+    rgba(22, 62, 77, 0) 70%
+  );
+}
+
+.header-solid {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  padding: 1rem 0;
+  background-color: var(--color-primary-deep);
+}
+
+nav {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.hero-overlay {
+  background: linear-gradient(
+    to right,
+    rgba(22, 62, 77, 0.75) 0%,
+    rgba(22, 62, 77, 0.55) 40%,
+    rgba(22, 62, 77, 0.2) 100%
+  );
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.section {
+  padding: 120px 20px 100px;
+  background: linear-gradient(180deg, #1b4d5f 0%, #1a4657 100%);
+}
+
+.wave-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+  z-index: 20;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: 80px;
+}
