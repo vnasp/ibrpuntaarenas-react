@@ -119,7 +119,7 @@ export default function Contacto() {
           </div>
 
           {/* Map */}
-          <div className="rounded-sm overflow-hidden shadow-md border border-border h-80 md:h-[26rem]">
+          <div className="rounded-sm overflow-hidden shadow-md border border-border h-80 md:h-104">
             <iframe
               title="Ubicación Iglesia Bautista Reformada Punta Arenas"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001.1!2d-70.9053!3d-53.1638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdaff9c0b0c5e0c1%3A0x0!2sIgnacio%20Carrera%20Pinto%20852%2C%20Punta%20Arenas%2C%20Chile!5e0!3m2!1ses!2scl!4v1700000000000!5m2!1ses!2scl"
