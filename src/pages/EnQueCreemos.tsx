@@ -16,7 +16,7 @@ export default function EnQueCreemos() {
         imageSrc={background2}
       />
 
-      <section className="bg-bg py-12">
+      <section className="bg-bg py-12 sm:px-16 md:px-20 lg:px-32">
         <div className="lg:max-w-7xl mx-auto px-4 sm:px-8">
           {/* Mobile: select dropdown */}
           <div className="md:hidden mb-6">

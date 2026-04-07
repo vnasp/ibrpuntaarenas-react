@@ -13,7 +13,7 @@ export default function Contacto() {
         imageSrc={background2}
       />
 
-      <section className="bg-bg py-20 px-8 sm:px-16 md:px-32">
+      <section className="bg-bg py-20 sm:px-16 md:px-20 lg:px-32">
         <div className="max-w-5xl lg:max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
           {/* Info column */}
           <div>

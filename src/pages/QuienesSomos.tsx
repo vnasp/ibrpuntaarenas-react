@@ -80,7 +80,7 @@ export default function QuienesSomos() {
       </section>
 
       {/* Misión */}
-      <section className="bg-primary/5 py-20 px-8 sm:px-16 md:px-32">
+      <section className="bg-primary/5 py-20 sm:px-16 md:px-20 lg:px-32">
         <div className="max-w-5xl lg:max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div className="border-l-2 border-accent pl-8 order-2 md:order-1">
             <p className="font-serif italic text-text text-2xl leading-relaxed mb-4">

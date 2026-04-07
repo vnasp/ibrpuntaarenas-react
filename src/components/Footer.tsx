@@ -28,7 +28,7 @@ export default function Footer() {
       </div>
       <footer className="bg-primary-deep text-white">
         {/* Cuerpo del footer */}
-        <div className="w-full px-4 md:px-16 lg:px-32 mx-auto py-14 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <div className="w-full px-4 md:px-16 lg:px-32 mx-auto py-14 grid sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-10">
           {/* Columna: Logo + descripción */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <img

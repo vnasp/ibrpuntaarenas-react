@@ -31,7 +31,7 @@ export default function Horarios() {
         imageSrc={background2}
       />
 
-      <section className="bg-bg py-20 px-8 sm:px-16 md:px-32">
+      <section className="bg-bg py-20 sm:px-16 md:px-20 lg:px-32">
         <div className="max-w-5xl lg:max-w-7xl mx-auto">
           <p className="uppercase tracking-[0.28em] text-xs font-body mb-4 text-center">
             Reuniones semanales
@@ -54,11 +54,11 @@ export default function Horarios() {
                   alt={s.title}
                   width={1536}
                   height={1024}
-                  className="w-full h-72 sm:h-52 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-72 sm:h-52 md:h-60 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-primary/90 via-primary/50 to-transparent" />
 
-                <div className="absolute inset-0 flex flex-col justify-center p-6">
+                <div className="absolute inset-0 flex flex-col justify-start p-4">
                   <div className="inline-flex self-start items-center px-3 py-1 mb-2 rounded-sm border border-accent/40 bg-primary-deep/60">
                     <p className="uppercase tracking-[0.28em] text-[9px] font-body text-white/90">
                       {s.day}
