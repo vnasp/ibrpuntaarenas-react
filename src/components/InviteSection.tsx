@@ -3,7 +3,7 @@ import LineDecorator from "./LineDecorator";
 
 export default function InviteSection() {
   return (
-    <section className="relative py-16 px-8 sm:px-16 md:px-24 overflow-hidden section">
+    <section className="relative py-16 px-8 sm:px-16 md:px-32 overflow-hidden section">
       <div className="max-w-4xl mx-auto text-center">
         <LineDecorator text="Reunión del Día del Señor" />
 
@@ -15,7 +15,7 @@ export default function InviteSection() {
         </h2>
 
         {/* Cuerpo */}
-        <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto text-left">
+        <div className="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto text-center sm:text-left">
           <p className="font-body text-white/80 text-base leading-relaxed">
             Nos reunimos cada domingo a las 11:30 para adorar a Dios conforme a
             las Escrituras, dando centralidad a la predicación fiel de Su
@@ -29,7 +29,7 @@ export default function InviteSection() {
         </div>
 
         {/* CTA */}
-        <div className="mt-10">
+        <div className="mt-10 mb-20">
           <Link
             to="/horarios"
             className="inline-block px-8 py-3 border border-white/50 hover:border-white hover:bg-white/10 text-white text-sm font-medium tracking-wide rounded transition-colors duration-200"

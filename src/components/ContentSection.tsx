@@ -1,6 +1,6 @@
 export default function ContentSection() {
   return (
-    <section id="quienes-somos" className="bg-bg py-20 px-8 sm:px-16 md:px-24">
+    <section id="quienes-somos" className="bg-bg py-20 px-8 sm:px-16 md:px-32">
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-center">
           {/* Columna de texto */}

@@ -17,7 +17,7 @@
 
   /* Texto */
   --color-text: #24343b;
-  --color-text-muted: #6b7c85;
+  --color-text-muted: #5d6f78;
 
   /* Bordes */
   --color-border: #d6dee3;
@@ -95,8 +95,13 @@ nav {
 }
 
 .section {
-  padding: 120px 20px 100px;
   background: linear-gradient(180deg, #1b4d5f 0%, #1a4657 100%);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding: 120px 20px 100px;
+  }
 }
 
 .wave-divider {

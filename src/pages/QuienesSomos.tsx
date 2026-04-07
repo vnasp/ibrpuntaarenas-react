@@ -7,13 +7,14 @@ export default function QuienesSomos() {
     <>
       <PageBanner
         decoratorText="Iglesia Bautista Reformada · Punta Arenas"
+        mobileDecoratorText="IBR · Punta Arenas"
         title="Quiénes Somos"
         subtitle="Afirmados en la verdad del evangelio y la Palabra de Dios"
         imageSrc={background2}
       />
 
       {/* Historia */}
-      <section className="bg-bg py-20 px-8 sm:px-16 md:px-24">
+      <section className="bg-bg py-20 px-8 sm:px-16 md:px-32">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <div>
@@ -43,12 +44,24 @@ export default function QuienesSomos() {
                 grupo, siendo acompañados inicialmente por hermanos de otras
                 iglesias, y creciendo en el conocimiento de la verdad bíblica.
               </p>
-              <p className="font-body text-text-muted text-base leading-relaxed">
+              <p className="font-body text-text-muted text-base leading-relaxed mb-4">
                 Durante los años de pandemia, el Señor nos sostuvo en medio de
                 las dificultades y nos permitió perseverar, reuniéndonos para
                 estudiar Su Palabra de manera constante. A través de ese tiempo,
                 fuimos afirmados en convicciones doctrinales claras y en la
                 centralidad del evangelio.
+              </p>
+              <p className="font-body text-text-muted text-base leading-relaxed mb-4">
+                Con el tiempo, el Señor fue consolidando la congregación y
+                añadiendo nuevos hermanos, permitiéndonos avanzar hacia una obra
+                más estable. Asimismo, hemos recibido el apoyo y acompañamiento
+                de iglesias hermanas que han sido de gran ayuda en este proceso.
+              </p>
+              <p className="font-body text-text-muted text-base leading-relaxed">
+                Hoy nos congregamos como Iglesia Bautista Reformada, buscando
+                glorificar a Dios en todo, mediante la predicación fiel de las
+                Escrituras, la oración y una vida que refleje el señorío de
+                Jesucristo.
               </p>
             </div>
 
@@ -56,6 +69,8 @@ export default function QuienesSomos() {
               <img
                 src={background1}
                 alt="Congregación IBR Punta Arenas"
+                width={1536}
+                height={1024}
                 className="w-full h-80 object-cover rounded-sm shadow-lg"
               />
               <div className="absolute -bottom-4 -left-4 w-24 h-24 border-2 border-accent opacity-40 rounded-sm" />
@@ -65,9 +80,9 @@ export default function QuienesSomos() {
       </section>
 
       {/* Misión */}
-      <section className="bg-primary/5 py-20 px-8 sm:px-16 md:px-24">
+      <section className="bg-primary/5 py-20 px-8 sm:px-16 md:px-32">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <div className="border-l-2 border-accent pl-8">
+          <div className="border-l-2 border-accent pl-8 order-2 md:order-1">
             <p className="font-serif italic text-text text-2xl leading-relaxed mb-4">
               "Proclamar fielmente la Palabra de Dios y el evangelio de
               Jesucristo"
@@ -77,7 +92,7 @@ export default function QuienesSomos() {
             </span>
           </div>
 
-          <div>
+          <div className="order-1 md:order-2">
             <p className="uppercase tracking-[0.28em] text-xs font-body text-text-muted mb-4">
               Nuestra misión
             </p>

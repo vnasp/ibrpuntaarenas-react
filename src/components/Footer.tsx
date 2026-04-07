@@ -12,7 +12,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <div className="relative ">
+    <div className="relative bg-primary-deep">
       <div className="absolute left-0 -top-10 w-full overflow-hidden leading-none rotate-180">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,13 +30,15 @@ export default function Footer() {
         {/* Cuerpo del footer */}
         <div className="max-w-6xl mx-auto px-8 sm:px-16 py-14 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
           {/* Columna: Logo + descripción */}
-          <div className="md:col-span-1">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <img
               src={logoBlanco}
               alt="IBR Punta Arenas"
+              width={4961}
+              height={1654}
               className="h-20 w-auto object-contain mb-4"
             />
-            <p className="font-body text-white/60 text-sm leading-relaxed max-w-xs">
+            <p className="font-body text-white/60 text-xs leading-relaxed max-w-xs mx-auto md:mx-0">
               Iglesia Bautista Reformada en Punta Arenas, centrada en la Palabra
               de Dios y el evangelio de Jesucristo.
             </p>
@@ -44,7 +46,7 @@ export default function Footer() {
 
           {/* Columna: Navegación */}
           <div>
-            <h3 className="font-heading text-sm uppercase tracking-widest text-white/50 mb-4">
+            <h3 className="font-heading text-xs uppercase tracking-widest text-white/50 mb-4">
               Navegación
             </h3>
             <ul className="space-y-2">
@@ -52,7 +54,7 @@ export default function Footer() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="font-body text-sm text-white/70 hover:text-white transition-colors duration-200"
+                    className="font-body text-xs text-white/70 hover:text-white transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -63,10 +65,10 @@ export default function Footer() {
 
           {/* Columna: Horarios */}
           <div>
-            <h3 className="font-heading text-sm uppercase tracking-widest text-white/50 mb-4">
+            <h3 className="font-heading text-xs uppercase tracking-widest text-white/50 mb-4">
               Horarios
             </h3>
-            <ul className="space-y-4 font-body text-sm text-white/70">
+            <ul className="space-y-4 font-body text-xs text-white/70">
               <li>
                 <span className="block text-white/90 font-medium">
                   Domingo 11:30
@@ -84,10 +86,10 @@ export default function Footer() {
 
           {/* Columna: Contacto */}
           <div>
-            <h3 className="font-heading text-sm uppercase tracking-widest text-white/50 mb-4">
+            <h3 className="font-heading text-xs uppercase tracking-widest text-white/50 mb-4">
               Contacto
             </h3>
-            <ul className="space-y-4 font-body text-sm text-white/70">
+            <ul className="space-y-4 font-body text-xs text-white/70">
               <li>
                 Ignacio Carrera Pinto 852, Local B
                 <br />
@@ -96,7 +98,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:ibrpuntaarenas@gmail.com"
-                  className="hover:text-white transition-colors duration-200"
+                  className="hover:text-white transition-colors duration-200 break-all text-[10px]"
                 >
                   ibrpuntaarenas@gmail.com
                 </a>

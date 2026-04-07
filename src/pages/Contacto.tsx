@@ -7,12 +7,13 @@ export default function Contacto() {
     <>
       <PageBanner
         decoratorText="Iglesia Bautista Reformada · Punta Arenas"
+        mobileDecoratorText="IBR · Punta Arenas"
         title="Contacto"
         subtitle="Puedes contactarnos o visitarnos en nuestras reuniones"
         imageSrc={background2}
       />
 
-      <section className="bg-bg py-20 px-8 sm:px-16">
+      <section className="bg-bg py-20 px-8 sm:px-16 md:px-32">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-start">
           {/* Info column */}
           <div>
