@@ -1,5 +1,6 @@
 import PageBanner from "../components/PageBanner";
 import InviteSection from "../components/InviteSection";
+import background2 from "../assets/bg2.webp";
 
 export default function Contacto() {
   return (
@@ -7,7 +8,8 @@ export default function Contacto() {
       <PageBanner
         decoratorText="Iglesia Bautista Reformada · Punta Arenas"
         title="Contacto"
-        subtitle="Nos encantaría conocerte"
+        subtitle="Puedes contactarnos o visitarnos en nuestras reuniones"
+        imageSrc={background2}
       />
 
       <section className="bg-bg py-20 px-8 sm:px-16">
@@ -18,12 +20,18 @@ export default function Contacto() {
               Información
             </p>
             <h2 className="font-heading text-text text-3xl sm:text-4xl leading-tight mb-4">
-              Estamos para <br />
-              escucharte
+              Escríbenos o
+              <br />
+              visítanos
             </h2>
+
             <div className="w-10 h-px bg-accent mb-8" />
 
             <div className="space-y-6">
+              <p>
+                Si deseas más información o quieres acompañarnos, puedes
+                contactarnos a través de los siguientes medios.
+              </p>
               <div className="flex gap-4 items-start">
                 <div className="mt-1 w-6 h-6 shrink-0 flex items-center justify-center">
                   <svg

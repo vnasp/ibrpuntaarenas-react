@@ -1,5 +1,6 @@
-import heroBg from "../assets/hero.png";
 import PageBanner from "../components/PageBanner";
+import background2 from "../assets/bg2.webp";
+import background1 from "../assets/bg1.webp";
 
 export default function QuienesSomos() {
   return (
@@ -7,7 +8,8 @@ export default function QuienesSomos() {
       <PageBanner
         decoratorText="Iglesia Bautista Reformada · Punta Arenas"
         title="Quiénes Somos"
-        subtitle="Una comunidad fundada en la gracia de Dios"
+        subtitle="Afirmados en la verdad del evangelio y la Palabra de Dios"
+        imageSrc={background2}
       />
 
       {/* Historia */}
@@ -19,33 +21,40 @@ export default function QuienesSomos() {
                 Nuestra historia
               </p>
               <h2 className="font-heading text-text text-3xl sm:text-4xl leading-tight mb-6">
-                Más de 60 años <br />
-                sirviendo en Punta Arenas
+                Un proceso guiado por la <br />
+                providencia de Dios
               </h2>
               <div className="w-10 h-px bg-accent mb-8" />
               <p className="font-body text-text-muted text-base leading-relaxed mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                Somos una iglesia cristiana en Punta Arenas comprometida con la
+                predicación fiel de la Palabra de Dios y el evangelio de
+                Jesucristo. Nuestra congregación tiene su origen en el proceso
+                mediante el cual distintas familias, de manera independiente,
+                llegaron al entendimiento del evangelio conforme a las
+                Escrituras.
               </p>
               <p className="font-body text-text-muted text-base leading-relaxed mb-4">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
+                Estas convicciones nos llevaron a salir de los contextos en los
+                que nos encontrábamos y a buscar congregarnos de manera fiel a
+                la Palabra de Dios.
+              </p>
+              <p className="font-body text-text-muted text-base leading-relaxed mb-4">
+                A partir del año 2018 comenzamos a reunirnos como un pequeño
+                grupo, siendo acompañados inicialmente por hermanos de otras
+                iglesias, y creciendo en el conocimiento de la verdad bíblica.
               </p>
               <p className="font-body text-text-muted text-base leading-relaxed">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo.
+                Durante los años de pandemia, el Señor nos sostuvo en medio de
+                las dificultades y nos permitió perseverar, reuniéndonos para
+                estudiar Su Palabra de manera constante. A través de ese tiempo,
+                fuimos afirmados en convicciones doctrinales claras y en la
+                centralidad del evangelio.
               </p>
             </div>
 
             <div className="relative">
               <img
-                src={heroBg}
+                src={background1}
                 alt="Congregación IBR Punta Arenas"
                 className="w-full h-80 object-cover rounded-sm shadow-lg"
               />
@@ -60,7 +69,8 @@ export default function QuienesSomos() {
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center">
           <div className="border-l-2 border-accent pl-8">
             <p className="font-serif italic text-text text-2xl leading-relaxed mb-4">
-              "Creciendo juntos para la gloria de Dios"
+              "Proclamar fielmente la Palabra de Dios y el evangelio de
+              Jesucristo"
             </p>
             <span className="font-body text-xs uppercase tracking-widest text-text-muted">
               — Misión IBR Punta Arenas
@@ -75,15 +85,14 @@ export default function QuienesSomos() {
               Lo que nos mueve
             </h2>
             <p className="font-body text-text-muted text-base leading-relaxed mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nemo enim
-              ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-              sed quia consequuntur magni dolores eos qui ratione voluptatem
-              sequi nesciunt.
+              Nuestra misión es glorificar a Dios mediante la predicación fiel
+              de Su Palabra, la proclamación del evangelio de Jesucristo y la
+              edificación de la iglesia conforme a las Escrituras.
             </p>
             <p className="font-body text-text-muted text-base leading-relaxed">
-              Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet
-              consectetur adipisci velit, sed quia non numquam eius modi tempora
-              incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+              Buscamos que todo en la vida de la iglesia esté centrado en la
+              verdad bíblica, viviendo en obediencia a Dios y dando testimonio
+              del evangelio.
             </p>
           </div>
         </div>
