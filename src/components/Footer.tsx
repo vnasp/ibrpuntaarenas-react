@@ -28,7 +28,7 @@ export default function Footer() {
       </div>
       <footer className="bg-primary-deep text-white">
         {/* Cuerpo del footer */}
-        <div className="max-w-6xl mx-auto px-8 sm:px-16 py-14 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+        <div className="w-full px-4 md:px-16 lg:px-32 mx-auto py-14 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
           {/* Columna: Logo + descripción */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <img
@@ -38,7 +38,7 @@ export default function Footer() {
               height={1654}
               className="h-20 w-auto object-contain mb-4"
             />
-            <p className="font-body text-white/60 text-xs leading-relaxed max-w-xs mx-auto md:mx-0">
+            <p className="font-body text-white text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
               Iglesia Bautista Reformada en Punta Arenas, centrada en la Palabra
               de Dios y el evangelio de Jesucristo.
             </p>
@@ -46,7 +46,7 @@ export default function Footer() {
 
           {/* Columna: Navegación */}
           <div>
-            <h3 className="font-heading text-xs uppercase tracking-widest text-white/50 mb-4">
+            <h3 className="font-heading text-sm uppercase tracking-widest text-white mb-4">
               Navegación
             </h3>
             <ul className="space-y-2">
@@ -54,7 +54,7 @@ export default function Footer() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="font-body text-xs text-white/70 hover:text-white transition-colors duration-200"
+                    className="font-body text-sm text-white hover:text-white transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -65,31 +65,31 @@ export default function Footer() {
 
           {/* Columna: Horarios */}
           <div>
-            <h3 className="font-heading text-xs uppercase tracking-widest text-white/50 mb-4">
+            <h3 className="font-heading text-sm uppercase tracking-widest text-white mb-4">
               Horarios
             </h3>
-            <ul className="space-y-4 font-body text-xs text-white/70">
+            <ul className="space-y-4 font-body text-sm text-white">
               <li>
                 <span className="block text-white/90 font-medium">
                   Domingo 11:30
                 </span>
-                <span className="text-white/50">Culto Día del Señor</span>
+                <span className="text-white">Culto Día del Señor</span>
               </li>
               <li>
                 <span className="block text-white/90 font-medium">
                   Viernes 19:30
                 </span>
-                <span className="text-white/50">Reunión de Oración</span>
+                <span className="text-white">Reunión de Oración</span>
               </li>
             </ul>
           </div>
 
           {/* Columna: Contacto */}
           <div>
-            <h3 className="font-heading text-xs uppercase tracking-widest text-white/50 mb-4">
+            <h3 className="font-heading text-sm uppercase tracking-widest text-white mb-4">
               Contacto
             </h3>
-            <ul className="space-y-4 font-body text-xs text-white/70">
+            <ul className="space-y-4 font-body text-sm text-white">
               <li>
                 Ignacio Carrera Pinto 852, Local B
                 <br />
@@ -98,7 +98,7 @@ export default function Footer() {
               <li>
                 <a
                   href="mailto:ibrpuntaarenas@gmail.com"
-                  className="hover:text-white transition-colors duration-200 break-all text-[10px]"
+                  className="hover:text-white transition-colors duration-200 break-all lg:text-sm md:text-[10px]"
                 >
                   ibrpuntaarenas@gmail.com
                 </a>
@@ -109,7 +109,7 @@ export default function Footer() {
 
         {/* Barra inferior */}
         <div className="border-t border-white/10">
-          <div className="max-w-6xl mx-auto px-8 sm:px-16 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/40 font-body">
+          <div className="w-full px-4 md:px-16 lg:px-32 mx-auto py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/60 font-body">
             <span>
               © {year} IBR Punta Arenas. Todos los derechos reservados.
             </span>
@@ -119,7 +119,7 @@ export default function Footer() {
                 href="https://linkedin.com/in/vnasp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white/70 underline underline-offset-2 transition-colors duration-200"
+                className="hover:text-white underline underline-offset-2 transition-colors duration-200"
               >
                 VM
               </a>

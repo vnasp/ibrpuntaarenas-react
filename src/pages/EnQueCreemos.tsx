@@ -17,12 +17,12 @@ export default function EnQueCreemos() {
       />
 
       <section className="bg-bg py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-8">
+        <div className="lg:max-w-7xl mx-auto px-4 sm:px-8">
           {/* Mobile: select dropdown */}
           <div className="md:hidden mb-6">
             <label
               htmlFor="chapter-select"
-              className="block text-xs uppercase tracking-widest text-text-muted mb-2 font-body"
+              className="block text-xs uppercase tracking-widest mb-2 font-body"
             >
               Capítulo
             </label>
@@ -44,7 +44,7 @@ export default function EnQueCreemos() {
           <div className="hidden md:flex gap-8 items-start">
             {/* Sidebar */}
             <aside className="w-72 shrink-0 sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2">
-              <p className="uppercase tracking-[0.28em] text-xs font-body text-text-muted mb-4">
+              <p className="uppercase tracking-[0.28em] text-xs font-body mb-4">
                 Capítulos
               </p>
               <ul className="space-y-1">
@@ -88,14 +88,14 @@ function ChapterContent({
 }) {
   return (
     <div>
-      <p className="uppercase tracking-[0.28em] text-xs font-body text-text-muted mb-3">
+      <p className="uppercase tracking-[0.28em] text-xs font-body mb-3">
         {chapter.number === 0 ? "Introducción" : `Capítulo ${chapter.number}`}
       </p>
       <h2 className="font-heading text-text text-3xl sm:text-4xl leading-tight mb-4">
         {chapter.title}
       </h2>
       <div className="w-10 h-px bg-accent mb-8" />
-      <div className="font-body text-text-muted text-base leading-relaxed space-y-4 whitespace-pre-line">
+      <div className="font-body text-base leading-relaxed space-y-4 whitespace-pre-line">
         {chapter.content}
       </div>
     </div>

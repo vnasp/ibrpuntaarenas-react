@@ -14,10 +14,10 @@ export default function Contacto() {
       />
 
       <section className="bg-bg py-20 px-8 sm:px-16 md:px-32">
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+        <div className="max-w-5xl lg:max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
           {/* Info column */}
           <div>
-            <p className="uppercase tracking-[0.28em] text-xs font-body text-text-muted mb-4">
+            <p className="uppercase tracking-[0.28em] text-xs font-body mb-4">
               Información
             </p>
             <h2 className="font-heading text-text text-3xl sm:text-4xl leading-tight mb-4">
@@ -50,7 +50,7 @@ export default function Contacto() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-body text-xs text-text-muted uppercase tracking-widest mb-1">
+                  <p className="font-body text-xs uppercase tracking-widest mb-1">
                     Email
                   </p>
                   <a
@@ -84,15 +84,13 @@ export default function Contacto() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-body text-xs text-text-muted uppercase tracking-widest mb-1">
+                  <p className="font-body text-xs uppercase tracking-widest mb-1">
                     Dirección
                   </p>
                   <p className="font-body text-text">
                     Ignacio Carrera Pinto 852, Local B
                   </p>
-                  <p className="font-body text-text-muted text-sm">
-                    Punta Arenas, Chile
-                  </p>
+                  <p className="font-body text-sm">Punta Arenas, Chile</p>
                 </div>
               </div>
 
@@ -113,7 +111,7 @@ export default function Contacto() {
                   </svg>
                 </div>
                 <div>
-                  <p className="font-body text-xs text-text-muted uppercase tracking-widest mb-1">
+                  <p className="font-body text-xs uppercase tracking-widest mb-1">
                     Horarios
                   </p>
                   <p className="font-body text-text">

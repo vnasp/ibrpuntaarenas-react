@@ -40,7 +40,7 @@ export default function CrossDecorator({ text, mobileText }: Props) {
       </div>
 
       {/* Texto sobre la línea horizontal */}
-      <p className="absolute top-1 left-9 uppercase tracking-[0.28em] text-xs font-body text-white/70">
+      <p className="absolute top-1 left-6 md:left-9 uppercase tracking-widest md:tracking-[0.28em] text-xs font-body text-white/70">
         {mobileText ? (
           <>
             <span className="sm:hidden">{mobileText}</span>
