@@ -63,12 +63,10 @@ header {
 }
 
 .header-solid {
-  position: sticky;
   top: 0;
   width: 100%;
   z-index: 50;
   padding: 1rem 0;
-  background-color: var(--color-primary-deep);
 }
 
 nav {

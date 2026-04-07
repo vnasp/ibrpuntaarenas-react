@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { confessionChapters } from "../data/confession";
 import PageBanner from "../components/PageBanner";
+import background2 from "../assets/bg2.webp";
 
 export default function EnQueCreemos() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -12,6 +13,7 @@ export default function EnQueCreemos() {
         decoratorText="Confesión de Fe Bautista de Londres 1689"
         title="En Qué Creemos"
         subtitle="Nuestra confesión de fe establece el fundamento de la enseñanza de nuestra iglesia"
+        imageSrc={background2}
       />
 
       <section className="bg-bg py-12">

@@ -15,28 +15,27 @@ export default function ContentSection() {
             </h2>
             <div className="w-10 h-px bg-accent mb-8" />
             <p className="font-body text-text-muted text-base leading-relaxed mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Somos una iglesia cristiana en Punta Arenas que, por la gracia de
+              Dios, ha sido formada en los últimos años con el propósito de
+              vivir conforme a las Escrituras.
             </p>
             <p className="font-body text-text-muted text-base leading-relaxed">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-              cupidatat non proident, sunt in culpa qui officia deserunt mollit
-              anim id est laborum.
+              Nos congregamos para adorar a Dios, siendo edificados por la
+              predicación de Su Palabra y afirmados en la verdad del evangelio
+              de Jesucristo.
             </p>
           </div>
 
           {/* Columna de cita destacada */}
           <div className="bg-primary/5 border-l-2 border-accent p-8 rounded-sm">
             <p className="font-serif italic text-text text-xl leading-relaxed mb-6">
-              "Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam eaque ipsa
-              quae ab illo inventore veritatis."
+              "Este Jesús es la piedra reprobada por vosotros los edificadores,
+              la cual ha venido a ser cabeza del ángulo. Y en ningún otro hay
+              salvación; porque no hay otro nombre bajo el cielo, dado a los
+              hombres, en que podamos ser salvos."
             </p>
             <span className="font-body text-xs uppercase tracking-widest text-text-muted">
-              — Referencia bíblica
+              -Hechos 4:11-12
             </span>
           </div>
         </div>

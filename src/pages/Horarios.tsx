@@ -1,6 +1,7 @@
-import heroBg from "../assets/hero.png";
+import background1 from "../assets/bg1.webp";
 import PageBanner from "../components/PageBanner";
 import InviteSection from "../components/InviteSection";
+import background2 from "../assets/bg2.webp";
 
 const services = [
   {
@@ -8,14 +9,14 @@ const services = [
     time: "11:30",
     title: "Culto Día del Señor",
     description:
-      "Nos congregamos cada domingo para adorar a Dios, proclamar su Palabra, celebrar los sacramentos y edificarnos mutuamente en la fe.",
+      "Nos congregamos cada domingo para adorar a Dios mediante la predicación fiel de Su Palabra.",
   },
   {
     day: "Viernes",
     time: "19:30",
     title: "Reunión de Oración",
     description:
-      "Un espacio semanal para acercarnos juntos al trono de la gracia, interceder por la iglesia, la ciudad y las naciones.",
+      "Nos reunimos reconociendo nuestra dependencia de Dios y presentando nuestras peticiones conforme a Su voluntad.",
   },
 ];
 
@@ -25,7 +26,8 @@ export default function Horarios() {
       <PageBanner
         decoratorText="Iglesia Bautista Reformada · Punta Arenas"
         title="Horarios"
-        subtitle="Te esperamos para adorar a Dios juntos"
+        subtitle="Nos congregamos para adorar a Dios conforme a Su Palabra"
+        imageSrc={background2}
       />
 
       <section className="bg-bg py-20 px-8 sm:px-16">
@@ -47,16 +49,18 @@ export default function Horarios() {
                 className="group relative overflow-hidden rounded-sm shadow-md"
               >
                 <img
-                  src={heroBg}
+                  src={background1}
                   alt={s.title}
                   className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-primary/90 via-primary/50 to-transparent" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="uppercase tracking-[0.28em] text-xs font-body text-accent mb-1">
-                    {s.day}
-                  </p>
+                  <div className="inline-flex items-center px-3 py-1 mb-2 rounded-sm border border-accent/40 bg-primary-deep/60">
+                    <p className="uppercase tracking-[0.28em] text-[9px] font-body text-accent">
+                      {s.day}
+                    </p>
+                  </div>
                   <p className="font-heading text-white text-4xl leading-none mb-2">
                     {s.time}
                   </p>
@@ -64,7 +68,7 @@ export default function Horarios() {
                     {s.title}
                   </h3>
                   <div className="w-8 h-px bg-accent mb-4" />
-                  <p className="font-body text-white/75 text-sm leading-relaxed">
+                  <p className="font-body text-white/75 text-[13px] leading-relaxed">
                     {s.description}
                   </p>
                 </div>
@@ -72,16 +76,48 @@ export default function Horarios() {
             ))}
           </div>
 
-          <div className="mt-16 border border-border rounded-sm p-8 text-center">
-            <p className="font-body text-text-muted text-sm uppercase tracking-widest mb-3">
-              Dirección
-            </p>
-            <p className="font-heading text-text text-xl">
-              Ignacio Carrera Pinto 852, Local B
-            </p>
-            <p className="font-body text-text-muted text-sm mt-1">
-              Punta Arenas, Chile
-            </p>
+          <div className="mt-16 border border-border rounded-sm p-8 bg-primary/5">
+            <div className="flex gap-4 items-start">
+              <div className="mt-1 w-6 h-6 shrink-0 flex items-center justify-center">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  className="w-5 h-5 text-accent"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <p className="font-body text-xs text-text-muted uppercase tracking-widest mb-1">
+                  Dirección
+                </p>
+                <p className="font-body text-text">
+                  Ignacio Carrera Pinto 852, Local B
+                </p>
+                <p className="font-body text-text-muted text-sm">
+                  Punta Arenas, Chile
+                </p>
+                <a
+                  href="https://maps.google.com/?q=Ignacio+Carrera+Pinto+852,+Punta+Arenas,+Chile"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block mt-3 font-body text-xs text-accent hover:text-primary uppercase tracking-widest transition-colors duration-200"
+                >
+                  Ver en Google Maps →
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
