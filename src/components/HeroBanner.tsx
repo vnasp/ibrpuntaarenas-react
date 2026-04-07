@@ -17,7 +17,7 @@ export default function HeroBanner() {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 hero-overlay " />
+      <div className="absolute inset-0 hero-overlay" />
 
       <div className="relative z-10 py-28 mt-16">
         <CrossDecorator text="Centrados en la Palabra de Dios" />

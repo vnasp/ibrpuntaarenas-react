@@ -1,3 +1,5 @@
+import CrossDecorator from "./CrossDecorator";
+
 interface Props {
   decoratorText: string;
   title: string;
@@ -13,7 +15,7 @@ export default function PageBanner({
 }: Props) {
   return (
     <section
-      className="relative w-full h-136 flex items-end overflow-hidden"
+      className="relative w-full h-[60vh] px-32 flex items-center"
       aria-label={title}
     >
       <img
@@ -22,17 +24,17 @@ export default function PageBanner({
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
-      <div className="absolute inset-0 bg-linear-to-b from-primary/50 via-primary/60 to-primary/90" />
 
-      <div className="relative z-10 px-8 sm:px-16 md:px-24 pb-40 w-full">
-        <p className="uppercase tracking-[0.28em] text-xs font-body text-white/60 mb-2">
-          {decoratorText}
-        </p>
-        <h1 className="font-heading text-white text-4xl sm:text-5xl leading-tight drop-shadow-md">
+      {/* Overlay */}
+      <div className="absolute inset-0 hero-overlay" />
+
+      <div className="relative z-10 py-28 mt-16">
+        <CrossDecorator text={decoratorText} />
+        <h1 className="font-heading text-white text-4xl sm:text-5xl leading-[1.05] tracking-tight drop-shadow-md">
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-2 font-serif italic text-white/80 text-base sm:text-lg">
+          <p className="mt-7 font-serif italic text-white/75 text-lg sm:text-xl max-w-lg">
             {subtitle}
           </p>
         )}
