@@ -1,17 +1,18 @@
 interface Props {
   text: string;
+  mobileText?: string;
 }
 
 /**
  * Decorador de cruz: línea vertical que se cruza con línea horizontal,
  * rombo en la intersección. El texto se superpone sobre la línea horizontal.
  */
-export default function CrossDecorator({ text }: Props) {
+export default function CrossDecorator({ text, mobileText }: Props) {
   return (
-    <div className="relative mb-6">
+    <div className="relative mb-6 overflow-x-hidden">
       <div aria-hidden="true">
         <svg
-          width="600"
+          width="100%"
           height="60"
           viewBox="0 0 600 60"
           fill="none"
@@ -39,8 +40,15 @@ export default function CrossDecorator({ text }: Props) {
       </div>
 
       {/* Texto sobre la línea horizontal */}
-      <p className="absolute top-1 left-9 uppercase tracking-[0.28em] text-xs font-body text-white/70">
-        {text}
+      <p className="absolute top-1 left-6 md:left-9 uppercase tracking-widest md:tracking-[0.28em] text-xs font-body text-white/70">
+        {mobileText ? (
+          <>
+            <span className="sm:hidden">{mobileText}</span>
+            <span className="hidden sm:inline">{text}</span>
+          </>
+        ) : (
+          text
+        )}
       </p>
     </div>
   );

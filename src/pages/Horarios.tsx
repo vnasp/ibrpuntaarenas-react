@@ -25,14 +25,15 @@ export default function Horarios() {
     <>
       <PageBanner
         decoratorText="Iglesia Bautista Reformada · Punta Arenas"
+        mobileDecoratorText="IBR · Punta Arenas"
         title="Horarios"
         subtitle="Nos congregamos para adorar a Dios conforme a Su Palabra"
         imageSrc={background2}
       />
 
-      <section className="bg-bg py-20 px-8 sm:px-16">
-        <div className="max-w-4xl mx-auto">
-          <p className="uppercase tracking-[0.28em] text-xs font-body text-text-muted mb-4 text-center">
+      <section className="bg-bg py-20 sm:px-16 md:px-20 lg:px-32">
+        <div className="max-w-5xl lg:max-w-7xl mx-auto">
+          <p className="uppercase tracking-[0.28em] text-xs font-body mb-4 text-center">
             Reuniones semanales
           </p>
           <h2 className="font-heading text-text text-3xl sm:text-4xl text-center leading-tight mb-3">
@@ -51,13 +52,15 @@ export default function Horarios() {
                 <img
                   src={background1}
                   alt={s.title}
-                  className="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
+                  width={1536}
+                  height={1024}
+                  className="w-full h-72 sm:h-52 md:h-60 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-primary/90 via-primary/50 to-transparent" />
 
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div className="inline-flex items-center px-3 py-1 mb-2 rounded-sm border border-accent/40 bg-primary-deep/60">
-                    <p className="uppercase tracking-[0.28em] text-[9px] font-body text-accent">
+                <div className="absolute inset-0 flex flex-col justify-start p-4">
+                  <div className="inline-flex self-start items-center px-3 py-1 mb-2 rounded-sm border border-accent/40 bg-primary-deep/60">
+                    <p className="uppercase tracking-[0.28em] text-[9px] font-body text-white/90">
                       {s.day}
                     </p>
                   </div>
@@ -99,15 +102,13 @@ export default function Horarios() {
                 </svg>
               </div>
               <div>
-                <p className="font-body text-xs text-text-muted uppercase tracking-widest mb-1">
+                <p className="font-body text-xs uppercase tracking-widest mb-1">
                   Dirección
                 </p>
                 <p className="font-body text-text">
                   Ignacio Carrera Pinto 852, Local B
                 </p>
-                <p className="font-body text-text-muted text-sm">
-                  Punta Arenas, Chile
-                </p>
+                <p className="font-body text-sm">Punta Arenas, Chile</p>
                 <a
                   href="https://maps.google.com/?q=Ignacio+Carrera+Pinto+852,+Punta+Arenas,+Chile"
                   target="_blank"

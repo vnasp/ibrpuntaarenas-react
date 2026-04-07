@@ -5,7 +5,7 @@ import CrossDecorator from "./CrossDecorator";
 export default function HeroBanner() {
   return (
     <section
-      className="relative w-full h-[90vh] px-32 flex items-center"
+      className="relative w-full h-[90vh] px-6 sm:px-16 md:px-20 lg:px-32 flex items-center"
       aria-label="Banner principal"
     >
       {/* Imagen de fondo */}
@@ -13,13 +13,15 @@ export default function HeroBanner() {
         src={background1}
         alt=""
         aria-hidden="true"
+        width={1536}
+        height={1024}
         className="absolute inset-0 w-full h-screen object-cover object-center hero-bg"
       />
 
       {/* Overlay */}
       <div className="absolute inset-0 hero-overlay" />
 
-      <div className="relative z-10 py-28 mt-16">
+      <div className="relative z-10 pt-40 pb-6 sm:pt-36 sm:pb-10 md:py-28 md:mt-16">
         <CrossDecorator text="Centrados en la Palabra de Dios" />
         <h1 className="font-heading text-white text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-tight drop-shadow-md">
           Iglesia Bautista
@@ -37,8 +39,8 @@ export default function HeroBanner() {
           </span>
         </p>
 
-        {/* CTAs */}
-        <div className="mt-10 flex flex-col sm:flex-row gap-3">
+        {/* CTAs — solo desde tablet */}
+        <div className="hidden sm:flex mt-10 flex-row gap-3">
           <Link
             to="/horarios"
             className="px-7 py-3 bg-btn hover:bg-btn-hover text-white text-sm font-medium tracking-wide rounded transition-colors duration-200 text-center"

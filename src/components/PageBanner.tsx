@@ -2,6 +2,7 @@ import CrossDecorator from "./CrossDecorator";
 
 interface Props {
   decoratorText: string;
+  mobileDecoratorText?: string;
   title: string;
   subtitle?: string;
   imageSrc?: string;
@@ -9,27 +10,30 @@ interface Props {
 
 export default function PageBanner({
   decoratorText,
+  mobileDecoratorText,
   title,
   subtitle,
   imageSrc,
 }: Props) {
   return (
     <section
-      className="relative w-full h-[60vh] px-32 flex items-center"
+      className="relative w-full h-[55vh] sm:h-[60vh] sm:px-16 md:px-20 lg:px-32 flex items-center"
       aria-label={title}
     >
       <img
         src={imageSrc}
         alt=""
         aria-hidden="true"
+        width={1536}
+        height={1024}
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
 
       {/* Overlay */}
       <div className="absolute inset-0 hero-overlay" />
 
-      <div className="relative z-10 py-28 mt-16">
-        <CrossDecorator text={decoratorText} />
+      <div className="relative z-10 pt-28 pb-4 sm:pb-8 md:py-24 md:mt-16">
+        <CrossDecorator text={decoratorText} mobileText={mobileDecoratorText} />
         <h1 className="font-heading text-white text-4xl sm:text-5xl leading-[1.05] tracking-tight drop-shadow-md">
           {title}
         </h1>
