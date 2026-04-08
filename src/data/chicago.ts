@@ -34,7 +34,7 @@ export const chicagoSections: ChicagoSection[] = [
     kind: "text",
     id: "acerca-de-esta-declaracion",
     label: "Acerca de esta declaración",
-    title: "Acerca de esta Declaración",
+    title: "Acerca de esta declaración",
     paragraphs: [
       "Como iglesia, afirmamos que la doctrina de la inerrancia de las Escrituras es esencial para la fe cristiana.",
       "En un contexto donde la autoridad y veracidad de la Biblia han sido cuestionadas, la Declaración de Chicago sobre la Inerrancia Bíblica (1978) fue redactada para expresar con claridad y precisión la enseñanza bíblica respecto a la naturaleza de las Escrituras.",
