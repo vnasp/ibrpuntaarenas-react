@@ -1,14 +1,97 @@
-import { useState } from "react";
-import { confessionChapters } from "../../data/confession";
-import background3 from "../../assets/bg3.webp";
+import { Fragment, useState } from "react";
+import {
+  confessionChapters,
+  type ConfessionChapter,
+} from "../../data/confession/index";
 
-function ChapterContent({
-  chapter,
-}: {
-  chapter: (typeof confessionChapters)[0];
-}) {
-  const paragraphs = chapter.content.split("\n\n");
+// Renders text with [1], [2]... as superscript footnote markers
+function withMarkers(text: string) {
+  return text.split(/(\[\d+\])/).map((part, i) => {
+    const match = part.match(/^\[(\d+)\]$/);
+    if (match) {
+      return (
+        <sup key={i} className="text-accent text-[0.65em] font-bold ml-0.5">
+          {match[1]}
+        </sup>
+      );
+    }
+    return <Fragment key={i}>{part}</Fragment>;
+  });
+}
 
+function Footnotes({ footnotes }: { footnotes: string[] }) {
+  return (
+    <div className="mt-3 pl-4 border-l border-border/50 space-y-1">
+      {footnotes.map((fn, i) => (
+        <p key={i} className="text-xs text-text-muted leading-relaxed">
+          <sup className="text-accent font-bold mr-1">{i + 1}</sup>
+          {fn}
+        </p>
+      ))}
+    </div>
+  );
+}
+
+const AT_BOOKS: [string, string, string][] = [
+  ["Génesis", "2 Crónicas", "Daniel"],
+  ["Éxodo", "Esdras", "Oseas"],
+  ["Levítico", "Nehemías", "Joel"],
+  ["Números", "Ester", "Amós"],
+  ["Deuteronomio", "Job", "Abdías"],
+  ["Josué", "Salmos", "Jonás"],
+  ["Jueces", "Proverbios", "Miqueas"],
+  ["Rut", "Eclesiastés", "Nahúm"],
+  ["1 Samuel", "Cantar de los Cantares", "Habacuc"],
+  ["2 Samuel", "Isaías", "Sofonías"],
+  ["1 Reyes", "Jeremías", "Hageo"],
+  ["2 Reyes", "Lamentaciones", "Zacarías"],
+  ["1 Crónicas", "Ezequiel", "Malaquías"],
+];
+
+const NT_BOOKS: [string, string, string][] = [
+  ["Mateo", "Efesios", "Hebreos"],
+  ["Marcos", "Filipenses", "Santiago"],
+  ["Lucas", "Colosenses", "1 Pedro"],
+  ["Juan", "1 Tesalonicenses", "2 Pedro"],
+  ["Hechos de los Apóstoles", "2 Tesalonicenses", "1 Juan"],
+  ["Romanos", "1 Timoteo", "2 Juan"],
+  ["1 Corintios", "2 Timoteo", "3 Juan"],
+  ["2 Corintios", "Tito", "Judas"],
+  ["Gálatas", "Filemón", "Apocalipsis"],
+];
+
+function BibleBooksTable() {
+  return (
+    <div className="my-4 font-body text-sm space-y-6 border border-border/40 rounded-sm p-4 bg-bg/50">
+      <div>
+        <p className="font-semibold underline mb-3">Antiguo Testamento</p>
+        <div className="grid grid-cols-3 gap-x-6 gap-y-1">
+          {AT_BOOKS.map(([a, b, c], i) => (
+            <Fragment key={i}>
+              <span>{a}</span>
+              <span>{b}</span>
+              <span>{c}</span>
+            </Fragment>
+          ))}
+        </div>
+      </div>
+      <div>
+        <p className="font-semibold underline mb-3">Nuevo Testamento</p>
+        <div className="grid grid-cols-3 gap-x-6 gap-y-1">
+          {NT_BOOKS.map(([a, b, c], i) => (
+            <Fragment key={i}>
+              <span>{a}</span>
+              <span>{b}</span>
+              <span>{c}</span>
+            </Fragment>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ChapterContent({ chapter }: { chapter: ConfessionChapter }) {
   return (
     <div>
       <p className="uppercase tracking-[0.28em] text-xs font-body mb-3">
@@ -20,25 +103,77 @@ function ChapterContent({
         {chapter.title}
       </h2>
       <div className="w-10 h-px bg-accent mb-8" />
-      <div className="font-body text-base leading-relaxed space-y-4">
-        {paragraphs.map((block, i) => {
-          const lines = block.split("\n");
-          const isBulletBlock = lines.every((l) => l.startsWith("•"));
+      <div className="font-body text-base leading-relaxed space-y-5">
+        {chapter.blocks.length === 0 && (
+          <p className="text-text-muted italic">Contenido en preparación.</p>
+        )}
+        {chapter.blocks.map((block, i) => {
+          switch (block.type) {
+            case "article":
+              return (
+                <div key={i}>
+                  <p>
+                    <span className="font-semibold">
+                      {block.number}.{"  "}
+                    </span>
+                    {withMarkers(block.content)}
+                  </p>
+                  {block.footnotes && block.footnotes.length > 0 && (
+                    <Footnotes footnotes={block.footnotes} />
+                  )}
+                </div>
+              );
 
-          if (isBulletBlock) {
-            return (
-              <ul key={i} className="space-y-2">
-                {lines.map((line, j) => (
-                  <li key={j} className="flex items-start gap-3">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
-                    <span>{line.replace(/^•\s*/, "")}</span>
-                  </li>
-                ))}
-              </ul>
-            );
+            case "paragraph":
+              return (
+                <div key={i}>
+                  <p>{withMarkers(block.content)}</p>
+                  {block.footnotes && block.footnotes.length > 0 && (
+                    <Footnotes footnotes={block.footnotes} />
+                  )}
+                </div>
+              );
+
+            case "bible-table":
+              return <BibleBooksTable key={i} />;
+
+            case "heading":
+              return (
+                <h3
+                  key={i}
+                  className="font-heading text-text text-xl mt-6 mb-2"
+                >
+                  {block.content}
+                </h3>
+              );
+
+            case "quote":
+              return (
+                <blockquote
+                  key={i}
+                  className="border-l-2 border-accent pl-4 my-4 space-y-1"
+                >
+                  <p className="italic text-text-muted">{block.content}</p>
+                  {block.reference && (
+                    <cite className="block text-xs uppercase tracking-widest text-accent not-italic">
+                      {block.reference}
+                    </cite>
+                  )}
+                </blockquote>
+              );
+
+            case "list":
+              return (
+                <ul key={i} className="space-y-2">
+                  {block.items.map((item, j) => (
+                    <li key={j} className="flex items-start gap-3">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              );
           }
-
-          return <p key={i}>{block}</p>;
         })}
       </div>
     </div>
@@ -99,20 +234,6 @@ export default function ConfecionTab() {
 
         <article className="flex-1 min-w-0 pb-20">
           <ChapterContent chapter={active} />
-          {active.number === 0 && (
-            <div className="relative mt-14 max-w-sm">
-              <img
-                src={background3}
-                alt=""
-                aria-hidden="true"
-                className="w-full h-56 object-cover object-center rounded-sm"
-              />
-              <div
-                aria-hidden="true"
-                className="absolute -bottom-3 -right-3 w-full h-full border-2 border-accent rounded-sm -z-10"
-              />
-            </div>
-          )}
         </article>
       </div>
 
