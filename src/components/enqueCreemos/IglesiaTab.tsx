@@ -180,8 +180,8 @@ export default function IglesiaTab({
           </div>
           <p className="font-body text-base leading-relaxed">
             Creemos que Jesucristo volverá corporalmente. Habrá resurrección de
-            los muertos y un juicio final, donde Dios juzgará con justicia tanto
-            a vivos como a muertos.
+            los muertos y un juicio final, donde Dios juzgará con justicia a
+            toda la humanidad.
           </p>
         </div>
       </div>
