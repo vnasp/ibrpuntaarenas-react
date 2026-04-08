@@ -92,7 +92,7 @@ export default function ChicagoTab() {
               <li key={s.id}>
                 <button
                   onClick={() => setActiveIndex(i)}
-                  className={`w-full text-left px-3 py-1 rounded-sm text-sm font-body transition-colors ${
+                  className={`w-full text-left px-3 py-2 rounded-sm text-sm font-body transition-colors ${
                     activeIndex === i
                       ? "bg-primary text-white"
                       : "text-text-muted hover:bg-primary/10 hover:text-text"

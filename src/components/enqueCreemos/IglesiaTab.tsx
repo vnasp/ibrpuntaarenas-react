@@ -14,17 +14,12 @@ export default function IglesiaTab({
         Declaración Doctrinal
       </h2>
       <div className="w-10 h-px bg-accent mb-10" />
-      <div className="space-y-3 font-body text-base leading-relaxed mb-12">
+      <div className="space-y-3 font-body text-base leading-relaxed mb-8">
         <p>
           Las siguientes declaraciones resumen las principales doctrinas que
           sostenemos como iglesia, conforme a la enseñanza de las Escrituras.
         </p>
       </div>
-
-      <p className="font-heading font-medium text-text text-2xl text-center py-14 mx-auto">
-        "Creemos que la Biblia es la única autoridad suficiente, segura e
-        infalible para la fe y la vida."
-      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
         <div className="border-l-2 border-accent pl-5 py-4 bg-primary/5 rounded-sm min-h-40">
