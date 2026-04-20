@@ -1,0 +1,219 @@
+---
+import { chicagoSections } from "../../data/chicago";
+---
+
+<div id="chicago-tab">
+  <!-- Mobile: select dropdown -->
+  <div class="md:hidden mb-6">
+    <label
+      for="chicago-select"
+      class="block text-xs uppercase tracking-widest mb-2 font-body"
+    >
+      Sección
+    </label>
+    <select
+      id="chicago-select"
+      class="w-full border border-border rounded-sm px-3 py-2 bg-white text-text font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+    >
+      {chicagoSections.map((s, i) => <option value={i}>{s.label}</option>)}
+    </select>
+  </div>
+
+  <!-- Desktop: sidebar + content -->
+  <div class="hidden md:flex gap-8 items-start">
+    <aside
+      class="w-72 shrink-0 sticky top-28 max-h-[calc(100vh-12rem)] overflow-y-auto pr-2"
+    >
+      <p class="uppercase tracking-[0.28em] text-xs font-body mb-4">
+        Secciones
+      </p>
+      <ul class="space-y-1">
+        {
+          chicagoSections.map((s, i) => (
+            <li>
+              <button
+                data-chicago-btn={i}
+                class={`w-full text-left px-3 py-2 rounded-sm text-sm font-body transition-colors ${
+                  i === 0
+                    ? "bg-primary text-white"
+                    : "text-text-muted hover:bg-primary/10 hover:text-text"
+                }`}
+              >
+                {s.label}
+              </button>
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
+
+    <div class="flex-1 min-w-0">
+      {
+        chicagoSections.map((s, i) => (
+          <article
+            data-chicago-content={i}
+            class={`pb-20 ${i !== 0 ? "hidden" : ""}`}
+          >
+            <p class="uppercase tracking-[0.28em] text-xs font-body mb-3">
+              Declaración de Chicago sobre la Inerrancia Bíblica
+            </p>
+            <h2 class="font-heading text-text text-3xl sm:text-4xl leading-tight mb-4">
+              {s.title}
+            </h2>
+            <div class="w-10 h-px bg-accent mb-8" />
+
+            {s.kind === "text" && (
+              <div class="space-y-4 font-body text-base leading-relaxed">
+                {s.paragraphs.map((p) => (
+                  <p>{p}</p>
+                ))}
+              </div>
+            )}
+
+            {s.kind === "brief" && (
+              <ol class="space-y-6 font-body text-base leading-relaxed list-none">
+                {s.points.map((point, idx) => (
+                  <li class="flex gap-4">
+                    <span class="font-heading text-accent text-lg shrink-0 w-5">
+                      {idx + 1}.
+                    </span>
+                    <p>{point}</p>
+                  </li>
+                ))}
+              </ol>
+            )}
+
+            {s.kind === "article" && (
+              <div class="space-y-6 font-body text-base leading-relaxed">
+                <div class="border-l-2 border-primary pl-5">
+                  <p class="uppercase tracking-widest text-xs text-primary mb-2">
+                    Afirmamos
+                  </p>
+                  <p>{s.affirm}</p>
+                </div>
+                <div class="border-l-2 border-text-muted pl-5">
+                  <p class="uppercase tracking-widest text-xs text-text-muted mb-2">
+                    {s.denyLabel ?? "Negamos"}
+                  </p>
+                  <p>{s.deny}</p>
+                </div>
+              </div>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Mobile content -->
+  <div class="md:hidden">
+    {
+      chicagoSections.map((s, i) => (
+        <article
+          data-chicago-mobile={i}
+          class={`pb-20 ${i !== 0 ? "hidden" : ""}`}
+        >
+          <p class="uppercase tracking-[0.28em] text-xs font-body mb-3">
+            Declaración de Chicago sobre la Inerrancia Bíblica
+          </p>
+          <h2 class="font-heading text-text text-3xl sm:text-4xl leading-tight mb-4">
+            {s.title}
+          </h2>
+          <div class="w-10 h-px bg-accent mb-8" />
+
+          {s.kind === "text" && (
+            <div class="space-y-4 font-body text-base leading-relaxed">
+              {s.paragraphs.map((p) => (
+                <p>{p}</p>
+              ))}
+            </div>
+          )}
+
+          {s.kind === "brief" && (
+            <ol class="space-y-6 font-body text-base leading-relaxed list-none">
+              {s.points.map((point, idx) => (
+                <li class="flex gap-4">
+                  <span class="font-heading text-accent text-lg shrink-0 w-5">
+                    {idx + 1}.
+                  </span>
+                  <p>{point}</p>
+                </li>
+              ))}
+            </ol>
+          )}
+
+          {s.kind === "article" && (
+            <div class="space-y-6 font-body text-base leading-relaxed">
+              <div class="border-l-2 border-primary pl-5">
+                <p class="uppercase tracking-widest text-xs text-primary mb-2">
+                  Afirmamos
+                </p>
+                <p>{s.affirm}</p>
+              </div>
+              <div class="border-l-2 border-text-muted pl-5">
+                <p class="uppercase tracking-widest text-xs text-text-muted mb-2">
+                  {s.denyLabel ?? "Negamos"}
+                </p>
+                <p>{s.deny}</p>
+              </div>
+            </div>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  function initChicagoTab() {
+    const select = document.getElementById(
+      "chicago-select",
+    ) as HTMLSelectElement | null;
+    const sidebarBtns =
+      document.querySelectorAll<HTMLButtonElement>("[data-chicago-btn]");
+    const desktopContents = document.querySelectorAll<HTMLElement>(
+      "[data-chicago-content]",
+    );
+    const mobileContents = document.querySelectorAll<HTMLElement>(
+      "[data-chicago-mobile]",
+    );
+
+    function showSection(index: number) {
+      desktopContents.forEach((el) => {
+        el.classList.toggle(
+          "hidden",
+          Number(el.dataset.chicagoContent) !== index,
+        );
+      });
+      mobileContents.forEach((el) => {
+        el.classList.toggle(
+          "hidden",
+          Number(el.dataset.chicagoMobile) !== index,
+        );
+      });
+      sidebarBtns.forEach((btn) => {
+        const active = Number(btn.dataset.chicagoBtn) === index;
+        btn.className = `w-full text-left px-3 py-2 rounded-sm text-sm font-body transition-colors ${
+          active
+            ? "bg-primary text-white"
+            : "text-text-muted hover:bg-primary/10 hover:text-text"
+        }`;
+      });
+      if (select) select.value = String(index);
+    }
+
+    sidebarBtns.forEach((btn) => {
+      btn.addEventListener("click", () =>
+        showSection(Number(btn.dataset.chicagoBtn)),
+      );
+    });
+
+    if (select) {
+      select.addEventListener("change", () =>
+        showSection(Number(select.value)),
+      );
+    }
+  }
+
+  initChicagoTab();
+</script>

@@ -1,0 +1,124 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+import InviteSection from "../components/InviteSection.astro";
+import background1 from "../assets/bg1.webp";
+import background2 from "../assets/bg2.webp";
+import { services } from "../data/services";
+---
+
+<BaseLayout
+  title="Horarios | IBR Punta Arenas"
+  description="Consulta los horarios de reuniones de la Iglesia Bautista Reformada en Punta Arenas."
+>
+  <PageBanner
+    decoratorText="Iglesia Bautista Reformada · Punta Arenas"
+    mobileDecoratorText="IBR · Punta Arenas"
+    title="Horarios"
+    subtitle="Nos congregamos para adorar a Dios conforme a Su Palabra"
+    imageSrc={background2.src}
+  />
+
+  <section class="bg-bg py-20 sm:px-16 md:px-20 lg:px-32">
+    <div class="max-w-5xl lg:max-w-7xl mx-auto">
+      <p class="uppercase tracking-[0.28em] text-xs font-body mb-4 text-center">
+        Reuniones semanales
+      </p>
+      <h2
+        class="font-heading text-text text-3xl sm:text-4xl text-center leading-tight mb-3"
+      >
+        Nuestros servicios
+      </h2>
+      <div class="flex justify-center mb-16">
+        <div class="w-10 h-px bg-accent"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <!-- Izquierda: servicios -->
+        <div class="flex flex-col gap-10">
+          {
+            services.map((s) => (
+              <div class="flex flex-col gap-2">
+                <div class="inline-flex self-start items-center px-3 py-1 rounded-sm border border-accent/40 bg-primary/5">
+                  <p class="uppercase tracking-[0.28em] text-[9px] font-body text-primary/80">
+                    {s.day}
+                  </p>
+                </div>
+                <p class="font-heading text-primary text-5xl leading-none">
+                  {s.time}
+                </p>
+                <h3 class="font-heading text-text text-2xl">{s.title}</h3>
+                <div class="w-8 h-px bg-accent" />
+                <p class="font-body text-text-muted text-sm leading-relaxed">
+                  {s.description}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- Derecha: imagen con squares decorativos -->
+        <div class="relative">
+          <div
+            class="absolute -top-4 -right-4 w-24 h-24 border-2 border-accent opacity-40 rounded-sm"
+          >
+          </div>
+          <div
+            class="absolute -bottom-4 -left-4 w-24 h-24 border-2 border-accent opacity-40 rounded-sm"
+          >
+          </div>
+          <Image
+            src={background1}
+            alt="Reunión de la Iglesia Bautista Reformada"
+            class="relative w-full h-96 object-cover rounded-sm shadow-lg"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <div class="mt-16 border border-border rounded-sm p-8 bg-primary/5">
+        <div class="flex gap-4 items-start">
+          <div class="mt-1 w-6 h-6 shrink-0 flex items-center justify-center">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              class="w-5 h-5 text-accent"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+              ></path>
+            </svg>
+          </div>
+          <div>
+            <p class="font-body text-xs uppercase tracking-widest mb-1">
+              Dirección
+            </p>
+            <p class="font-body text-text">
+              Ignacio Carrera Pinto 852, Local B
+            </p>
+            <p class="font-body text-sm">Punta Arenas, Chile</p>
+            <a
+              href="https://maps.google.com/?q=Ignacio+Carrera+Pinto+852,+Punta+Arenas,+Chile"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-body text-sm text-primary hover:underline mt-1 inline-block"
+            >
+              Ver en Google Maps →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <InviteSection />
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+interface Props {
+  text: string;
+  mobileText?: string;
+}
+
+const { text, mobileText } = Astro.props;
+---
+
+<div class="relative mb-6 overflow-x-hidden">
+  <div aria-hidden="true">
+    <svg
+      width="100%"
+      height="60"
+      viewBox="0 0 600 60"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="text-accent"
+    >
+      <line
+        x1="0"
+        y1="30"
+        x2="420"
+        y2="30"
+        stroke="currentColor"
+        stroke-width="1"></line>
+      <line
+        x1="18"
+        y1="10"
+        x2="18"
+        y2="80"
+        stroke="currentColor"
+        stroke-width="1"></line>
+      <polygon points="18,24 24,30 18,36 12,30" fill="currentColor"></polygon>
+    </svg>
+  </div>
+  <p
+    class="absolute top-1 left-6 md:left-9 uppercase tracking-widest md:tracking-[0.28em] text-xs font-body text-white/80"
+  >
+    {
+      mobileText ? (
+        <>
+          <span class="sm:hidden">{mobileText}</span>
+          <span class="hidden sm:inline">{text}</span>
+        </>
+      ) : (
+        text
+      )
+    }
+  </p>
+</div>

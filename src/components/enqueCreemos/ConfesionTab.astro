@@ -1,0 +1,308 @@
+---
+import {
+  confessionChapters,
+  type ContentBlock,
+} from "../../data/confession/index";
+
+const AT_BOOKS: [string, string, string][] = [
+  ["Génesis", "2 Crónicas", "Daniel"],
+  ["Éxodo", "Esdras", "Oseas"],
+  ["Levítico", "Nehemías", "Joel"],
+  ["Números", "Ester", "Amós"],
+  ["Deuteronomio", "Job", "Abdías"],
+  ["Josué", "Salmos", "Jonás"],
+  ["Jueces", "Proverbios", "Miqueas"],
+  ["Rut", "Eclesiastés", "Nahúm"],
+  ["1 Samuel", "Cantar de los Cantares", "Habacuc"],
+  ["2 Samuel", "Isaías", "Sofonías"],
+  ["1 Reyes", "Jeremías", "Hageo"],
+  ["2 Reyes", "Lamentaciones", "Zacarías"],
+  ["1 Crónicas", "Ezequiel", "Malaquías"],
+];
+
+const NT_BOOKS: [string, string, string][] = [
+  ["Mateo", "Efesios", "Hebreos"],
+  ["Marcos", "Filipenses", "Santiago"],
+  ["Lucas", "Colosenses", "1 Pedro"],
+  ["Juan", "1 Tesalonicenses", "2 Pedro"],
+  ["Hechos de los Apóstoles", "2 Tesalonicenses", "1 Juan"],
+  ["Romanos", "1 Timoteo", "2 Juan"],
+  ["1 Corintios", "2 Timoteo", "3 Juan"],
+  ["2 Corintios", "Tito", "Judas"],
+  ["Gálatas", "Filemón", "Apocalipsis"],
+];
+
+function withMarkers(text: string): string {
+  return text.replace(
+    /\[(\d+)\]/g,
+    '<sup class="text-accent text-[0.65em] font-bold ml-0.5">$1</sup>',
+  );
+}
+
+function renderFootnotes(footnotes: string[]): string {
+  if (!footnotes.length) return "";
+  const items = footnotes
+    .map(
+      (fn, i) =>
+        '<p class="text-xs text-text-muted leading-relaxed"><sup class="text-accent font-bold mr-1">' +
+        (i + 1) +
+        "</sup>" +
+        fn +
+        "</p>",
+    )
+    .join("");
+  return (
+    '<div class="mt-3 pl-4 border-l border-border/50 space-y-1">' +
+    items +
+    "</div>"
+  );
+}
+
+function bibleTable(): string {
+  const atRows = AT_BOOKS.map(
+    ([a, b, c]) =>
+      "<span>" + a + "</span><span>" + b + "</span><span>" + c + "</span>",
+  ).join("");
+  const ntRows = NT_BOOKS.map(
+    ([a, b, c]) =>
+      "<span>" + a + "</span><span>" + b + "</span><span>" + c + "</span>",
+  ).join("");
+  return (
+    '<div class="my-4 font-body text-sm space-y-6 border border-border/40 rounded-sm p-4 bg-bg/50">' +
+    '<div><p class="font-semibold underline mb-3">Antiguo Testamento</p>' +
+    '<div class="grid grid-cols-3 gap-x-6 gap-y-1">' +
+    atRows +
+    "</div></div>" +
+    '<div><p class="font-semibold underline mb-3">Nuevo Testamento</p>' +
+    '<div class="grid grid-cols-3 gap-x-6 gap-y-1">' +
+    ntRows +
+    "</div></div>" +
+    "</div>"
+  );
+}
+
+function renderBlock(block: ContentBlock): string {
+  switch (block.type) {
+    case "article":
+      return (
+        '<div><p><span class="font-semibold">' +
+        block.number +
+        ".&nbsp;&nbsp;</span>" +
+        withMarkers(block.content) +
+        "</p>" +
+        (block.footnotes ? renderFootnotes(block.footnotes) : "") +
+        "</div>"
+      );
+    case "paragraph":
+      return (
+        "<div><p>" +
+        withMarkers(block.content) +
+        "</p>" +
+        (block.footnotes ? renderFootnotes(block.footnotes) : "") +
+        "</div>"
+      );
+    case "bible-table":
+      return bibleTable();
+    case "heading":
+      return (
+        '<h3 class="font-heading text-text text-xl mt-6 mb-2">' +
+        block.content +
+        "</h3>"
+      );
+    case "quote":
+      return (
+        '<blockquote class="border-l-2 border-accent pl-4 my-4 space-y-1"><p class="italic text-text-muted">' +
+        block.content +
+        "</p>" +
+        (block.reference
+          ? '<cite class="block text-xs uppercase tracking-widest text-accent not-italic">' +
+            block.reference +
+            "</cite>"
+          : "") +
+        "</blockquote>"
+      );
+    case "list": {
+      const listItems = block.items
+        .map(
+          (item) =>
+            '<li class="flex items-start gap-3"><span class="mt-2 w-1.5 h-1.5 rounded-full bg-accent shrink-0"></span><span>' +
+            item +
+            "</span></li>",
+        )
+        .join("");
+      return '<ul class="space-y-2">' + listItems + "</ul>";
+    }
+  }
+}
+
+function chapterLabel(ch: { number: number; title: string }): string {
+  return ch.number === 0 ? ch.title : `${ch.number}. ${ch.title}`;
+}
+---
+
+<div id="confesion-tab">
+  <!-- Mobile: select dropdown -->
+  <div class="md:hidden mb-6">
+    <label
+      for="chapter-select"
+      class="block text-xs uppercase tracking-widest mb-2 font-body"
+    >
+      Capítulo
+    </label>
+    <select
+      id="chapter-select"
+      class="w-full border border-border rounded-sm px-3 py-2 bg-white text-text font-body text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+    >
+      {
+        confessionChapters.map((ch, i) => (
+          <option value={i}>{chapterLabel(ch)}</option>
+        ))
+      }
+    </select>
+  </div>
+
+  <!-- Desktop: sidebar + content -->
+  <div class="hidden md:flex gap-8 items-start">
+    <aside
+      class="w-72 shrink-0 sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto pr-2"
+    >
+      <p class="uppercase tracking-[0.28em] text-xs font-body mb-4">
+        Capítulos
+      </p>
+      <ul class="space-y-1" id="chapter-sidebar">
+        {
+          confessionChapters.map((ch, i) => (
+            <li>
+              <button
+                data-chapter-btn={i}
+                class={`w-full text-left px-3 py-2 rounded-sm text-sm font-body transition-colors ${
+                  i === 0
+                    ? "bg-primary text-white"
+                    : "text-text-muted hover:bg-primary/10 hover:text-text"
+                }`}
+              >
+                {chapterLabel(ch)}
+              </button>
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
+
+    <!-- All chapter contents, show only active -->
+    <div class="flex-1 min-w-0">
+      {
+        confessionChapters.map((ch, i) => (
+          <article
+            data-chapter-content={i}
+            class={`pb-20 ${i !== 0 ? "hidden" : ""}`}
+          >
+            <p class="uppercase tracking-[0.28em] text-xs font-body mb-3">
+              {ch.number === 0
+                ? "Confesión Bautista de Fe de 1689"
+                : `Capítulo ${ch.number}`}
+            </p>
+            <h2 class="font-heading text-text text-3xl sm:text-4xl leading-tight mb-4">
+              {ch.title}
+            </h2>
+            <div class="w-10 h-px bg-accent mb-8" />
+            <div class="font-body text-base leading-relaxed space-y-5">
+              {ch.blocks.length === 0 ? (
+                <p class="text-text-muted italic">Contenido en preparación.</p>
+              ) : (
+                ch.blocks.map((block) => (
+                  <Fragment set:html={renderBlock(block)} />
+                ))
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- Mobile content: show only active -->
+  <div class="md:hidden">
+    {
+      confessionChapters.map((ch, i) => (
+        <article
+          data-chapter-mobile={i}
+          class={`pb-20 ${i !== 0 ? "hidden" : ""}`}
+        >
+          <p class="uppercase tracking-[0.28em] text-xs font-body mb-3">
+            {ch.number === 0
+              ? "Confesión Bautista de Fe de 1689"
+              : `Capítulo ${ch.number}`}
+          </p>
+          <h2 class="font-heading text-text text-3xl sm:text-4xl leading-tight mb-4">
+            {ch.title}
+          </h2>
+          <div class="w-10 h-px bg-accent mb-8" />
+          <div class="font-body text-base leading-relaxed space-y-5">
+            {ch.blocks.length === 0 ? (
+              <p class="text-text-muted italic">Contenido en preparación.</p>
+            ) : (
+              ch.blocks.map((block) => (
+                <Fragment set:html={renderBlock(block)} />
+              ))
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  function initConfesionTab() {
+    const select = document.getElementById(
+      "chapter-select",
+    ) as HTMLSelectElement | null;
+    const sidebarBtns =
+      document.querySelectorAll<HTMLButtonElement>("[data-chapter-btn]");
+    const desktopContents = document.querySelectorAll<HTMLElement>(
+      "[data-chapter-content]",
+    );
+    const mobileContents = document.querySelectorAll<HTMLElement>(
+      "[data-chapter-mobile]",
+    );
+
+    function showChapter(index: number) {
+      desktopContents.forEach((el) => {
+        el.classList.toggle(
+          "hidden",
+          Number(el.dataset.chapterContent) !== index,
+        );
+      });
+      mobileContents.forEach((el) => {
+        el.classList.toggle(
+          "hidden",
+          Number(el.dataset.chapterMobile) !== index,
+        );
+      });
+      sidebarBtns.forEach((btn) => {
+        const active = Number(btn.dataset.chapterBtn) === index;
+        btn.className = `w-full text-left px-3 py-2 rounded-sm text-sm font-body transition-colors ${
+          active
+            ? "bg-primary text-white"
+            : "text-text-muted hover:bg-primary/10 hover:text-text"
+        }`;
+      });
+      if (select) select.value = String(index);
+    }
+
+    sidebarBtns.forEach((btn) => {
+      btn.addEventListener("click", () =>
+        showChapter(Number(btn.dataset.chapterBtn)),
+      );
+    });
+
+    if (select) {
+      select.addEventListener("change", () =>
+        showChapter(Number(select.value)),
+      );
+    }
+  }
+
+  initConfesionTab();
+</script>

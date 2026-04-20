@@ -1,0 +1,63 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../index.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Iglesia Bautista Reformada | Punta Arenas",
+  description = "Iglesia Bautista Reformada en Punta Arenas. Comprometidos con la predicación fiel de la Palabra de Dios y el evangelio de Jesucristo.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Valentina Muñoz" />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="iglesia bautista reformada, punta arenas, evangelio, predicación, cristiana, magallanes"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="es_CL" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <main class="bg-bg">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              const delay = el.dataset.delay ? Number(el.dataset.delay) : 0;
+              setTimeout(() => el.classList.add("in-view"), delay);
+              observer.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.15 },
+      );
+
+      document
+        .querySelectorAll("[data-animate]")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

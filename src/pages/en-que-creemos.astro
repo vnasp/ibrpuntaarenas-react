@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageBanner from "../components/PageBanner.astro";
+import IglesiaTab from "../components/enqueCreemos/IglesiaTab.astro";
+import ConfesionTab from "../components/enqueCreemos/ConfesionTab.astro";
+import ChicagoTab from "../components/enqueCreemos/ChicagoTab.astro";
+import background3 from "../assets/bg3.webp";
+---
+
+<BaseLayout
+  title="En Qué Creemos | IBR Punta Arenas"
+  description="Conoce lo que creemos: declaración doctrinal, Confesión Bautista de Fe de 1689 y Declaración de Chicago."
+>
+  <PageBanner
+    decoratorText="Lo que creemos"
+    title="En Qué Creemos"
+    subtitle="Creemos que la Biblia es la única autoridad suficiente, segura e infalible."
+    imageSrc={background3.src}
+  />
+
+  <section class="bg-bg py-12 px-8 sm:px-16 md:px-32">
+    <div class="max-w-5xl lg:max-w-7xl mx-auto">
+      <!-- Navegación de tabs -->
+      <div
+        id="tabs-nav"
+        class="flex flex-wrap gap-2 mb-10 border-b border-border pb-4"
+      >
+        <button
+          data-tab="iglesia"
+          class="tab-btn px-4 py-2 text-sm font-body cursor-pointer rounded-sm transition-colors bg-primary text-white"
+        >
+          Lo que creemos
+        </button>
+        <button
+          data-tab="confesion"
+          class="tab-btn px-4 py-2 text-sm font-body cursor-pointer rounded-sm transition-colors text-text-muted hover:bg-primary/10 hover:text-text"
+        >
+          Confesión Bautista
+        </button>
+        <button
+          data-tab="chicago"
+          class="tab-btn px-4 py-2 text-sm font-body cursor-pointer rounded-sm transition-colors text-text-muted hover:bg-primary/10 hover:text-text"
+        >
+          Declaración de Chicago
+        </button>
+      </div>
+
+      <!-- Contenido de tabs -->
+      <div id="tab-iglesia">
+        <IglesiaTab />
+      </div>
+      <div id="tab-confesion" class="hidden">
+        <ConfesionTab />
+      </div>
+      <div id="tab-chicago" class="hidden">
+        <ChicagoTab />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const tabBtns = document.querySelectorAll<HTMLButtonElement>(".tab-btn");
+  const tabPanels: Record<string, HTMLElement | null> = {
+    iglesia: document.getElementById("tab-iglesia"),
+    confesion: document.getElementById("tab-confesion"),
+    chicago: document.getElementById("tab-chicago"),
+  };
+
+  function showTab(active: string) {
+    tabBtns.forEach((btn) => {
+      const isActive = btn.dataset.tab === active;
+      btn.className = `tab-btn px-4 py-2 text-sm font-body cursor-pointer rounded-sm transition-colors ${
+        isActive
+          ? "bg-primary text-white"
+          : "text-text-muted hover:bg-primary/10 hover:text-text"
+      }`;
+    });
+    Object.entries(tabPanels).forEach(([key, el]) => {
+      if (el) el.classList.toggle("hidden", key !== active);
+    });
+    if (active !== "iglesia") {
+      document
+        .getElementById("tabs-nav")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tab = btn.dataset.tab;
+      if (tab) showTab(tab);
+    });
+  });
+</script>

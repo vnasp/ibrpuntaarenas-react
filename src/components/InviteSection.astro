@@ -1,0 +1,50 @@
+---
+import LineDecorator from "./LineDecorator.astro";
+import { services } from "../data/services";
+
+const sunday = services[0];
+---
+
+<section
+  class="relative py-16 sm:px-16 md:px-20 lg:px-32 overflow-hidden section"
+>
+  <div class="max-w-7xl mx-auto text-center">
+    <div data-animate data-delay="0">
+      <LineDecorator text="Reunión del Día del Señor" />
+    </div>
+
+    <h2
+      class="font-heading text-white text-3xl sm:text-4xl md:text-5xl leading-tight mb-8"
+      data-animate
+      data-delay="130"
+    >
+      Te invitamos a congregarte<br />con nosotros
+    </h2>
+
+    <div
+      class="grid sm:grid-cols-2 gap-8 text-center sm:text-left"
+      data-animate="fade"
+      data-delay="280"
+    >
+      <p class="font-body text-white/80 text-base leading-relaxed">
+        Somos una iglesia cristiana en Punta Arenas que, por la gracia de Dios,
+        ha sido formada a través de un proceso de crecimiento y afirmación en la
+        verdad del evangelio.
+      </p>
+      <p class="font-body text-white/80 text-base leading-relaxed">
+        Nos reunimos cada {sunday.day.toLowerCase()} a las {sunday.time} para adorar
+        a Dios conforme a las Escrituras, dando centralidad a la predicación fiel
+        de Su Palabra.
+      </p>
+    </div>
+
+    <div class="mt-10 mb-20" data-animate data-delay="400">
+      <a
+        href="/horarios"
+        class="inline-block px-8 py-3 border border-white/50 hover:border-white hover:bg-white/10 text-white text-sm font-medium tracking-wide rounded transition-colors duration-200"
+      >
+        Ver horarios y ubicación
+      </a>
+    </div>
+  </div>
+</section>
